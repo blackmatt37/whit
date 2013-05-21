@@ -327,6 +327,7 @@ def hello_monkey():
     # c for company 
     # n for company number
     # w for wiki
+    # m for wolfram alpha
     # text_body[0] is first name, text_body[1] is last name
     if inputString.__len__() > 0:
         if firstLetters.lower() == 'p':
@@ -346,7 +347,11 @@ def hello_monkey():
                 twilioOutput = queryCrunchBaseForCompanyNumber(twilioInput[1:])
             except:
                 twilioOutput = "Sorry, no number exists for this company." 
-
+        elif firstLetters.lower() == 'm:':
+            try:
+                twilioOutput = queryWolframAlpha(twilioInput[1:])
+            except: 
+                twilioOutput = "Sorry, wolfram alpha could not interpret the query"
         elif firstLetters.lower() == 'w:':
             try: 
                 twilioOutput = parseWiki(twilioInput[1:])
