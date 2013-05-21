@@ -382,7 +382,11 @@ def hello_monkey():
     message = client.sms.messages.create(to=from_number, from_="+19177913098", body="From the Hackathon:")
     '''
     resp = twilio.twiml.Response()
-    resp.sms(twilioOutput)
+    
+
+    #   loop over all of the messages, and add them to the response obj
+    for mess in twilioOutput:
+        resp.sms(str(mess))
     return str(resp)
 
 if __name__ == "__main__":
