@@ -15,6 +15,19 @@ app = Flask(__name__)
 -#   Bit.ly API Key - Add yours here
 -access_token = ''
 
+# ---------------------------------------------------------------------------------------
+#    Utility method to separate a message that it too long to a list of shorter messages
+# ---------------------------------------------------------------------------------------
+def separate(body):
+
+    messages = []
+    while len(body) > 155:
+        messages.append(body[:155])
+        body = body[155:]
+    messages.append(body)
+    return messages
+
+
 # ------------------------------------------------------
 #    Utility method to get a bitly shortlink from a URL
 # ------------------------------------------------------
