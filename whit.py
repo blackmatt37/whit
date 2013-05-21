@@ -16,6 +16,13 @@ app = Flask(__name__)
 -access_token = ''
 -#   Wolfram Alpha API Key
 -appid = ''
+
+# -----------------------------------------------
+#   Utitliy method to remove all non ascii chars  
+# -----------------------------------------------
+def removeNonAscii(s): return "".join(i for i in s if ord(i)<128)
+
+
 # ---------------------------------------------------------------------------------------
 #    Utility method to separate a message that it too long to a list of shorter messages
 # ---------------------------------------------------------------------------------------
