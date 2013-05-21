@@ -14,7 +14,8 @@ app = Flask(__name__)
 -
 -#   Bit.ly API Key - Add yours here
 -access_token = ''
-
+-#   Wolfram Alpha API Key
+-appid = ''
 # ---------------------------------------------------------------------------------------
 #    Utility method to separate a message that it too long to a list of shorter messages
 # ---------------------------------------------------------------------------------------
