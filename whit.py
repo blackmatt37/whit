@@ -163,8 +163,9 @@ def queryCrunchBaseForPerson(firstName, lastName):
     # ---------
     #   Return
     # ---------
-
-    return entrySummary + shortLinkToDisplay
+    
+    #   Return a list of messages to send
+    return separate(entrySummary + shortLinkToDisplay)
     
 
 # -------------------------------------------------
@@ -209,7 +210,8 @@ def queryCrunchBaseForCompanySummary(company):
     #   Return
     # ---------
 
-    return entrySummary + shortLinkToDisplay
+    #   Return a list of messages to send
+    return separate(entrySummary + shortLinkToDisplay)
 
 
 # --------------------------------------------------
@@ -253,7 +255,8 @@ def queryCrunchBaseForCompanyNumber(company):
     #   Return
     # ---------
 
-    return company + ': ' + number
+    #   Return a list of messages to send
+    return separate(company + ': ' + number)
 
 def parseWiki(search):
 
@@ -293,7 +296,9 @@ def parseWiki(search):
     shortLink = json.loads( urlopen(shortapi).read() )
     shortened = shortLink['data']['url']
 
-    return getSummary(p7 ) + str(shortened)[7:15]+str(shortened)[15:]
+
+    #   Return a list of messages to send
+    return separate(getSummary(p7 ) + str(shortened)[7:15]+str(shortened)[15:])
 
 def parseStock(ticker):
     url = 'http://dev.markitondemand.com/Api/Quote/json?symbol=' + ticker + '&callback=myFunction'
@@ -301,7 +306,9 @@ def parseStock(ticker):
 
     e = json.loads(r)
 
-    return str(e['Data']['Name']) + '[' + str(e['Data']['Symbol']) + ']: ' + 'is priced $'+ str(e['Data']['LastPrice']) + ". Since " + str(e['Data']['Timestamp'])
+
+    #   Return a list of messages to send
+    return separate(str(e['Data']['Name']) + '[' + str(e['Data']['Symbol']) + ']: ' + 'is priced $'+ str(e['Data']['LastPrice']) + ". Since " + str(e['Data']['Timestamp']))
 
 
 @app.route("/", methods=['GET', 'POST'])
