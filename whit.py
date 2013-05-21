@@ -311,6 +311,24 @@ def parseStock(ticker):
     return separate(str(e['Data']['Name']) + '[' + str(e['Data']['Symbol']) + ']: ' + 'is priced $'+ str(e['Data']['LastPrice']) + ". Since " + str(e['Data']['Timestamp']))
 
 
+def queryWolframAlpha(body):
+    client = wolframalpha.Client(appid)
+    res = client.query(body)
+    string = ""
+    i = 0 
+    for pod in res.pods:
+        if i >=2:
+            break
+        if pod.text != None:
+            title = pod.title.encode('utf-8')
+            text = pod.text.encode('utf-8')
+            string += title + " " + text + "\n"
+        i += 1
+    return seperate(removeNonAscii(string))
+
+
+
+
 @app.route("/", methods=['GET', 'POST'])
 def hello_monkey():
 
