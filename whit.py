@@ -334,49 +334,49 @@ def hello_monkey():
             try:
                 twilioOutput = queryCrunchBaseForPerson(text_body[0][2:].lower(), text_body[1].lower())
             except:
-                twilioOutput = "Sorry, no one named " + text_body[0][2:] + " exists in crunchbase."
+                twilioOutput = ["Sorry, no one named " + text_body[0][2:] + " exists in crunchbase."]
 
         elif firstLetters.lower() == 'c:':
             try:
                 twilioOutput = queryCrunchBaseForCompanySummary(twilioInput[1:])
             except:
-                twilioOutput = "Sorry, no company named '" + twilioInput[2:] + "' exists in crunchbase."
+                twilioOutput = ["Sorry, no company named '" + twilioInput[2:] + "' exists in crunchbase."]
 
         elif inputString[:3] == 'n:':
             try:
                 twilioOutput = queryCrunchBaseForCompanyNumber(twilioInput[1:])
             except:
-                twilioOutput = "Sorry, no number exists for this company." 
+                twilioOutput = ["Sorry, no number exists for this company." ]
         elif firstLetters.lower() == 'm:':
             try:
                 twilioOutput = queryWolframAlpha(twilioInput[1:])
             except: 
-                twilioOutput = "Sorry, wolfram alpha could not interpret the query"
+                twilioOutput = ["Sorry, wolfram alpha could not interpret the query"]
         elif firstLetters.lower() == 'w:':
             try: 
                 twilioOutput = parseWiki(twilioInput[1:])
             except:
-                twilioOutput = "Sorry, no matches came up for your wiki query, please refine your search."
+                twilioOutput = ["Sorry, no matches came up for your wiki query, please refine your search."]
 
         elif firstLetters.lower() == 's:':
             try:
                 twilioOutput = parseStock(inputString[1:])
             except:
-                twilioOutput = "Sorry, no matches came up for your stock query, please refine your search."
+                twilioOutput = ["Sorry, no matches came up for your stock query, please refine your search."]
 
         elif twilioInput.lower() == 'h:':
-            twilioOutput = "Send the name of a person, a company, or a stock ticker code. Commands:\np'person', c:'company', s:'Stock', w:'wikipedia'\npBill Gates\nc:Google\nngoogle\ns:aapl\nw:obama" 
+            twilioOutput = ["Send the name of a person, a company, or a stock ticker code. Commands:\np'person', c:'company', s:'Stock', w:'wikipedia'\npBill Gates\nc:Google\nngoogle\ns:aapl\nw:obama" ]
         
         else:
             try:
                 twilioOutput = parseWiki(twilioInput)
             except:
-                "Please enter a valid wiki search query. Type * for help."
+                twilioOutput = ["Please enter a valid wiki search query. Type * for help."]
     else:
         try:
             twilioOutput = parseWiki(twilioInput)
         except:
-            "Please enter a valid wiki search query. Type * for help."
+            twilioOutput = ["Please enter a valid wiki search query. Type * for help."]
     
     '''
     account_sid = "ACa1c928ab9eb750ba1fb4ed0953f0f032"
