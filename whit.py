@@ -5,7 +5,7 @@ import json                                 # Python's built in JSON library
 import twilio.twiml                         # Handle twilio responses
 from twilio.rest import TwilioRestClient    # Handle twilio requests
 from urllib import urlopen                  # General Python requests
-
+import wolframalpha
 #   Required for Google App Engine's app.yaml
 app = Flask(__name__)
 
