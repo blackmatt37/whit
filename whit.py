@@ -21,6 +21,18 @@ app = Flask(__name__)
 -appid = ''
 -#   Forecast.io apikey
 -fio_api = ''
+-#   Geociding api from texas a&m
+-
+
+# ---
+#   Geocoding api from texas a&m http://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderWebService.aspx
+# ---
+def geocode(zipCode):
+    response = urlopen("https://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderWebServiceHttpNonParsed_V04_01.aspx?apiKey=41dcda96a31342769ddb337521599595&zip=" + zipCode + "&version=4.01").read().split(",")
+    return  float(response[3]), float(response[4])
+
+
+
 
 # -----------------------------------------------
 #   Utitliy method to remove all non ascii chars  
