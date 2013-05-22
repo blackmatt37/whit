@@ -34,8 +34,8 @@ def geocode(zipCode):
 
 
 def getWeather(zipCode):
-    (lat, lon) = geocode("22102")
-    ds_interface = darksky.DarkSky("beed38f21677eb8cd16d69fc6ccb8ef3")
+    (lat, lon) = geocode(zipCode)
+    ds_interface = darksky.DarkSky(fio_api)
     cw = current_weather = ds_interface.getWeather(latitude = lat, longitude=lon)
     return [str(cw.currently["temperature"]) + " degrees F"]
 
@@ -392,6 +392,11 @@ def hello_monkey():
                 twilioOutput = queryWolframAlpha(twilioInput[1:])
             except: 
                 twilioOutput = ["Sorry, wolfram alpha could not interpret the query"]
+        elif firstLetters.lower() == 'd:':
+            try:
+                twilioOutput = getWeather(zipCode)
+            except:
+                twilioOutput = ["Sorry this is not a valid zip code"]
         elif firstLetters.lower() == 'w:':
             try: 
                 twilioOutput = parseWiki(twilioInput[1:])
