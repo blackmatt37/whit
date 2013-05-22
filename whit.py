@@ -16,6 +16,8 @@ app = Flask(__name__)
 -access_token = ''
 -#   Wolfram Alpha API Key
 -appid = ''
+-#   Forecast.io apikey
+-fio_api = ''
 
 # -----------------------------------------------
 #   Utitliy method to remove all non ascii chars  
