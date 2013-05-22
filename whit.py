@@ -33,6 +33,11 @@ def geocode(zipCode):
 
 
 
+def getWeather(zipCode):
+    (lat, lon) = geocode("22102")
+    ds_interface = darksky.DarkSky("beed38f21677eb8cd16d69fc6ccb8ef3")
+    cw = current_weather = ds_interface.getWeather(latitude = lat, longitude=lon)
+    return [str(cw.currently["temperature"]) + " degrees F"]
 
 # -----------------------------------------------
 #   Utitliy method to remove all non ascii chars  
