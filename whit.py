@@ -22,13 +22,13 @@ app = Flask(__name__)
 -#   Forecast.io apikey
 -fio_api = ''
 -#   Geociding api from texas a&m
--
+-geo_api = ''
 
 # ---
 #   Geocoding api from texas a&m http://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderWebService.aspx
 # ---
 def geocode(zipCode):
-    response = urlopen("https://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderWebServiceHttpNonParsed_V04_01.aspx?apiKey=41dcda96a31342769ddb337521599595&zip=" + zipCode + "&version=4.01").read().split(",")
+    response = urlopen("https://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderWebServiceHttpNonParsed_V04_01.aspx?apiKey=" + geo_api + "&zip=" + zipCode + "&version=4.01").read().split(",")
     return  float(response[3]), float(response[4])
 
 
