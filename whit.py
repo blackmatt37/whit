@@ -355,6 +355,7 @@ def queryWolframAlpha(body):
 def hello_monkey():
 
     twilioInput = request.form['Body']
+    zipCode = request.form['FromZip']
     text_body = twilioInput.split(" ")
     
     inputString = text_body[0]
